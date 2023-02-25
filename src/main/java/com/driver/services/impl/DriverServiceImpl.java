@@ -30,7 +30,7 @@ public class DriverServiceImpl implements DriverService {
 		cab.setAvailable(true);
 
 		driver.setCab(cab);
-		driver.setMobNo(mobile);
+		driver.setMobile(mobile);
 		driver.setPassword(password);
 
 		driverRepository3.save(driver);

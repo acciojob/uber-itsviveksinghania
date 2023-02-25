@@ -11,7 +11,7 @@ public class Customer {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int customerId;
-    private String mobNo;
+    private String mobile;
     private String password;
 
     private List<TripBooking> tripBookingList;
@@ -24,12 +24,12 @@ public class Customer {
         this.customerId = customerId;
     }
 
-    public String getMobNo() {
-        return mobNo;
+    public String getMobile() {
+        return mobile;
     }
 
-    public void setMobNo(String mobNo) {
-        this.mobNo = mobNo;
+    public void setMobile(String mobile) {
+        this.mobile = mobile;
     }
 
     public String getPassword() {
@@ -52,9 +52,9 @@ public class Customer {
         tripBookingList = new ArrayList<>();
     }
 
-    public Customer(int customerId, String mobNo, String password, List<TripBooking> tripBookingList) {
+    public Customer(int customerId, String mobile, String password, List<TripBooking> tripBookingList) {
         this.customerId = customerId;
-        this.mobNo = mobNo;
+        this.mobile = mobile;
         this.password = password;
         this.tripBookingList = tripBookingList;
     }

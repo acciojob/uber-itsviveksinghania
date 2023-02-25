@@ -22,8 +22,9 @@ public class DriverController {
 	}
 	
 	@DeleteMapping(value = "/delete")
-	public void deleteDriver(@RequestParam Integer driverId){
+	public ResponseEntity<Void> deleteDriver(@RequestParam Integer driverId){
 		driverService.removeDriver(driverId);
+		return new ResponseEntity<>(HttpStatus.OK);
 	}
 
 	@PutMapping("/status")

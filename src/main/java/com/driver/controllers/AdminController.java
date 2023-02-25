@@ -31,8 +31,9 @@ public class AdminController {
 	}
 
 	@DeleteMapping("/delete")
-	public void deleteAdmin(@RequestParam Integer adminId){
+	public ResponseEntity<Void> deleteAdmin(@RequestParam Integer adminId){
 		adminService.deleteAdmin(adminId);
+		return new ResponseEntity<>(HttpStatus.OK);
 	}
 
 	@GetMapping("/listOfCustomers")

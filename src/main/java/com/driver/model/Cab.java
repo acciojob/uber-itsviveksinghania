@@ -1,5 +1,7 @@
 package com.driver.model;
 
+import com.fasterxml.jackson.annotation.JsonBackReference;
+
 import javax.persistence.*;
 
 @Entity
@@ -13,7 +15,7 @@ public class Cab {
     private boolean available;
 
     //private Driver driver;
-
+    @JsonBackReference
     @OneToOne
     @JoinColumn
     private Driver driver;

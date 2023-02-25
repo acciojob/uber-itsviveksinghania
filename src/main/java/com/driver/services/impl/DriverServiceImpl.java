@@ -29,11 +29,13 @@ public class DriverServiceImpl implements DriverService {
 		cab.setPerKmRate(10);
 		cab.setAvailable(true);
 
+
 		driver.setCab(cab);
 		driver.setMobile(mobile);
 		driver.setPassword(password);
-
+		cab.setDriver(driver);
 		driverRepository3.save(driver);
+
 	}
 
 	@Override
@@ -53,6 +55,7 @@ public class DriverServiceImpl implements DriverService {
 		}
 
 		driver1.getCab().setAvailable(false);
+		driverRepository3.save(driver1);
 
 	}
 }

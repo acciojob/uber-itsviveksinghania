@@ -1,5 +1,7 @@
 package com.driver.model;
 
+import com.fasterxml.jackson.annotation.JsonManagedReference;
+
 import javax.persistence.*;
 import java.util.ArrayList;
 import java.util.List;
@@ -16,9 +18,11 @@ public class Driver {
     //private Cab cab;
     //private List<TripBooking> tripBookingList;
 
+    @JsonManagedReference
     @OneToOne(mappedBy = "driver",cascade = CascadeType.ALL)
     private Cab cab;
 
+    @JsonManagedReference
     @OneToMany(mappedBy = "driver", cascade = CascadeType.ALL)
     private List<TripBooking> tripBookingList = new ArrayList<>();
 

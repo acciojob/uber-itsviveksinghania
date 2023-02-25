@@ -1,5 +1,7 @@
 package com.driver.model;
 
+import com.fasterxml.jackson.annotation.JsonBackReference;
+
 import javax.persistence.*;
 
 @Entity
@@ -22,10 +24,12 @@ public class TripBooking {
 
     //private Driver driver;
 
+    @JsonBackReference
     @ManyToOne
     @JoinColumn
     private Driver driver;
 
+    @JsonBackReference
     @ManyToOne
     @JoinColumn
     private Customer customer;

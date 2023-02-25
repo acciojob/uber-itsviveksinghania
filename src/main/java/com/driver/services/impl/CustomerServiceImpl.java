@@ -65,7 +65,7 @@ public class CustomerServiceImpl implements CustomerService {
 		tripBooking.setFromLocation(fromLocation);
 		tripBooking.setToLocation(toLocation);
 		tripBooking.setDistanceInKm(distanceInKm);
-		tripBooking.setTripStatus(TripStatus.CONFIRMED);
+		tripBooking.setStatus(TripStatus.CONFIRMED);
 		tripBookingRepository2.save(tripBooking);
 
 		// Update the driver's availability
@@ -82,7 +82,7 @@ public class CustomerServiceImpl implements CustomerService {
 		//Cancel the trip having given trip Id and update TripBooking attributes accordingly
 		Optional<TripBooking> tripBooking = tripBookingRepository2.findById(tripId);
 
-		tripBooking.ifPresent(booking -> booking.setTripStatus(TripStatus.CANCELED));
+		tripBooking.ifPresent(booking -> booking.setStatus(TripStatus.CANCELED));
 	}
 
 	@Override
@@ -90,6 +90,6 @@ public class CustomerServiceImpl implements CustomerService {
 		//Complete the trip having given trip Id and update TripBooking attributes accordingly
 		Optional<TripBooking> tripBooking = tripBookingRepository2.findById(tripId);
 
-		tripBooking.ifPresent(booking -> booking.setTripStatus(TripStatus.COMPLETED));
+		tripBooking.ifPresent(booking -> booking.setStatus(TripStatus.COMPLETED));
 	}
 }

@@ -18,9 +18,19 @@ public class TripBooking {
 
     private int bill;
 
+    //private Customer customer;
+
+    //private Driver driver;
+
+    @ManyToOne
+    @JoinColumn
+    private Driver driver;
+
+    @ManyToOne
+    @JoinColumn
     private Customer customer;
 
-    private Driver driver;
+    ////////////////////////////////////////////////////////////////////////////////////////////////////////
 
     public TripBooking() {
     }

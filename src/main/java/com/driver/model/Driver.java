@@ -13,23 +13,25 @@ public class Driver {
     private int driverId;
     private String mobile;
     private String password;
-    private Cab cab;
-    private List<TripBooking> tripBookingList;
+    //private Cab cab;
+    //private List<TripBooking> tripBookingList;
 
-    @OneToOne(mappedBy = "driverFk",cascade = CascadeType.ALL)
-    private Cab cabFk;
+    @OneToOne(mappedBy = "driver",cascade = CascadeType.ALL)
+    private Cab cab;
+
+    @OneToMany(mappedBy = "driver", cascade = CascadeType.ALL)
+    private List<TripBooking> tripBookingList = new ArrayList<>();
+
+    ////////////////////////////////////////////////////////////////////////////////////////////////////////
 
     public Driver() {
-        tripBookingList = new ArrayList<>();
+
     }
 
-    public Driver(int driverId, String mobNo, String password, Cab cab, List<TripBooking> tripBookingList, Cab cabFk) {
+    public Driver(int driverId, String mobNo, String password) {
         this.driverId = driverId;
         this.mobile = mobNo;
         this.password = password;
-        this.cab = cab;
-        this.tripBookingList = tripBookingList;
-        this.cabFk = cabFk;
     }
 
     public int getDriverId() {
@@ -72,11 +74,4 @@ public class Driver {
         this.tripBookingList = tripBookingList;
     }
 
-    public Cab getCabFk() {
-        return cabFk;
-    }
-
-    public void setCabFk(Cab cabFk) {
-        this.cabFk = cabFk;
-    }
 }

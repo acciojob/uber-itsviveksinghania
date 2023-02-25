@@ -14,7 +14,11 @@ public class Customer {
     private String mobile;
     private String password;
 
-    private List<TripBooking> tripBookingList;
+    //private List<TripBooking> tripBookingList;
+
+
+    @OneToMany(mappedBy = "customer", cascade = CascadeType.ALL)
+    private List<TripBooking> tripBookingList = new ArrayList<>();
 
     public int getCustomerId() {
         return customerId;
@@ -49,7 +53,6 @@ public class Customer {
     }
 
     public Customer() {
-        tripBookingList = new ArrayList<>();
     }
 
     public Customer(int customerId, String mobile, String password, List<TripBooking> tripBookingList) {

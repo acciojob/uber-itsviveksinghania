@@ -47,7 +47,7 @@ public class CustomerServiceImpl implements CustomerService {
 		// Find the driver with the lowest ID who is free
 		Driver selectedDriver = null;
 		for (Driver driver : drivers) {
-			if (driver.getCab().isAvailable()) {
+			if (driver.getCab().getAvailable()) {
 				selectedDriver = driver;
 				break;
 			}

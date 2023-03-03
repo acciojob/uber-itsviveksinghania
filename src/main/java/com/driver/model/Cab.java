@@ -5,42 +5,39 @@ import com.fasterxml.jackson.annotation.JsonBackReference;
 import javax.persistence.*;
 
 @Entity
-@Table(name = "cab")
 public class Cab {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private int Id;
-    private int perKmRate;
-    private boolean available;
+    private Integer Id;
+    private Integer perKmRate;
+    private Boolean available;
 
-    //private Driver driver;
-    @JsonBackReference
     @OneToOne
     @JoinColumn
-    private Driver driver;
+    Driver driver;
 
-    public int getId() {
+    public Integer getId() {
         return Id;
     }
 
-    public void setId(int id) {
+    public void setId(Integer id) {
         Id = id;
     }
 
-    public int getPerKmRate() {
+    public Integer getPerKmRate() {
         return perKmRate;
     }
 
-    public void setPerKmRate(int perKmRate) {
+    public void setPerKmRate(Integer perKmRate) {
         this.perKmRate = perKmRate;
     }
 
-    public boolean getAvailable() {
+    public Boolean getAvailable() {
         return available;
     }
 
-    public void setAvailable(boolean available) {
+    public void setAvailable(Boolean available) {
         this.available = available;
     }
 
@@ -50,15 +47,5 @@ public class Cab {
 
     public void setDriver(Driver driver) {
         this.driver = driver;
-    }
-
-    public Cab() {
-    }
-
-    public Cab(int id, int perKmRate, boolean available) {
-        this.Id = id;
-        this.perKmRate = perKmRate;
-        this.available = available;
-
     }
 }

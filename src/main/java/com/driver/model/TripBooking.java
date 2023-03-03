@@ -5,56 +5,32 @@ import com.fasterxml.jackson.annotation.JsonBackReference;
 import javax.persistence.*;
 
 @Entity
-@Table(name = "tripBooking")
 public class TripBooking {
-
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private int tripBookingId;
-    private String fromLocation;
-    private String toLocation;
+    private Integer tripBookingId;
+
+    private String fromLocation; //The start location of the trip
+    private String toLocation; //The end location of the trip
     private int distanceInKm;
 
     @Enumerated(value = EnumType.STRING)
     private TripStatus status;
-
     private int bill;
 
-    //private Customer customer;
-
-    //private Driver driver;
-
-    @JsonBackReference
-    @ManyToOne
-    @JoinColumn
-    private Driver driver;
-
-    @JsonBackReference
     @ManyToOne
     @JoinColumn
     private Customer customer;
 
-    ////////////////////////////////////////////////////////////////////////////////////////////////////////
+    @ManyToOne
+    @JoinColumn
+    private Driver driver;
 
-    public TripBooking() {
-    }
-
-    public TripBooking(int tripBookingId, String fromLocation, String toLocation, int distanceInKm, TripStatus status, int bill, Customer customer, Driver driver) {
-        this.tripBookingId = tripBookingId;
-        this.fromLocation = fromLocation;
-        this.toLocation = toLocation;
-        this.distanceInKm = distanceInKm;
-        this.status = status;
-        this.bill = bill;
-        this.customer = customer;
-        this.driver = driver;
-    }
-
-    public int getTripBookingId() {
+    public Integer getTripBookingId() {
         return tripBookingId;
     }
 
-    public void setTripBookingId(int tripBookingId) {
+    public void setTripBookingId(Integer tripBookingId) {
         this.tripBookingId = tripBookingId;
     }
 

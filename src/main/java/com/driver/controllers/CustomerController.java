@@ -14,7 +14,7 @@ import org.springframework.web.bind.annotation.*;
 public class CustomerController {
 
 	@Autowired
-	CustomerServiceImpl customerService;
+	CustomerService customerService;
 
 	@PostMapping("/register")
 	public ResponseEntity<Void> registerCustomer(@RequestBody Customer customer){
@@ -23,26 +23,23 @@ public class CustomerController {
 	}
 
 	@DeleteMapping("/delete")
-	public ResponseEntity<Void> deleteCustomer(@RequestParam Integer customerId){
+	public void deleteCustomer(@PathVariable Integer customerId){
 		customerService.deleteCustomer(customerId);
-		return new ResponseEntity<>(HttpStatus.OK);
 	}
 
 	@PostMapping("/bookTrip")
-	public ResponseEntity<Integer> bookTrip(@RequestParam Integer customerId, @RequestParam String fromLocation, @RequestParam String toLocation, @RequestParam Integer distanceInKm) throws Exception {
-		TripBooking bookedTrip = customerService.bookTrip(customerId,fromLocation,toLocation,distanceInKm);
-		return new ResponseEntity<>(bookedTrip.getTripBookingId(), HttpStatus.CREATED);
+	public ResponseEntity<TripBooking> bookTrip(@PathVariable Integer customerId, @RequestParam String fromLocation, @RequestParam String toLocation, @RequestParam Integer distanceInKm) throws Exception {
+		TripBooking bookedTrip = customerService.bookTrip(customerId, fromLocation, toLocation, distanceInKm);
+		return new ResponseEntity<TripBooking>(bookedTrip, HttpStatus.CREATED);
 	}
 
-	@DeleteMapping("/complete")
-	public ResponseEntity<Void> completeTrip(@RequestParam Integer tripId){
+	@DeleteMapping("/complete/{tripId}")
+	public void completeTrip(@PathVariable("tripId") Integer tripId){
 		customerService.completeTrip(tripId);
-		return new ResponseEntity<>(HttpStatus.OK);
 	}
 
 	@DeleteMapping("/cancelTrip")
-	public ResponseEntity<Void> cancelTrip(@RequestParam Integer tripId){
+	public void cancelTrip(@RequestParam Integer tripId){
 		customerService.cancelTrip(tripId);
-		return new ResponseEntity<>(HttpStatus.OK);
 	}
 }
